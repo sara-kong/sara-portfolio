@@ -25,9 +25,7 @@ export default function Nav() {
           <Link
             key={href}
             href={href}
-            className={`text-black text-xl font-medium hover:opacity-60 transition-opacity ${
-              pathname === href ? "underline underline-offset-4 decoration-1" : ""
-            }`}
+            className="text-black text-xl font-medium hover:opacity-60 transition-opacity"
           >
             {label}
           </Link>

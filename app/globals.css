@@ -4,6 +4,10 @@
   --font-sans: var(--font-inter);
 }
 
+* {
+  cursor: none !important;
+}
+
 body {
   background-color: #fff;
   color: #000;

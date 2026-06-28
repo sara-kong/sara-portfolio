@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero";
 import WorkBlock from "@/components/WorkBlock";
+import TypewriterOnce from "@/components/TypewriterOnce";
 
 const sections = [
   {
@@ -23,7 +24,7 @@ export default function Play() {
     <>
       <Hero
         title="play."
-        subtitle="some by design, some by necessity, all by passion."
+        subtitle={<TypewriterOnce text="some by design, some by necessity, all by passion." />}
       />
       <section className="px-20 pb-16">
         <div className="space-y-8">
