@@ -5,16 +5,16 @@ const socialLinks = [
   { label: "[youtube]", href: "https://www.youtube.com/@saraknggg", primary: false },
 ];
 
-const infoLines = [
+const infoLines: { text: string; primary: boolean; href?: string }[] = [
   { text: "made in: new york city", primary: true },
   { text: "currently in: san francisco", primary: false },
-  { text: "contact me: sk11347@nyu.edu", primary: false },
+  { text: "contact me: sk11347@nyu.edu", primary: false, href: "mailto:sk11347@nyu.edu" },
   { text: "built by sara kong, 2026.", primary: false },
 ];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-black px-20 py-12">
+    <footer className="px-20 py-12">
       <div className="flex justify-between items-start">
         {/* Left column */}
         <div>
@@ -38,16 +38,28 @@ export default function Footer() {
 
         {/* Right column */}
         <div className="flex flex-col gap-5 text-right">
-          {infoLines.map(({ text, primary }) => (
-            <p
-              key={text}
-              className={`text-base font-medium ${
-                primary ? "text-black" : "text-[#444]"
-              }`}
-            >
-              {text}
-            </p>
-          ))}
+          {infoLines.map(({ text, primary, href }) =>
+            href ? (
+              <a
+                key={text}
+                href={href}
+                className={`text-base font-medium hover:opacity-60 transition-opacity ${
+                  primary ? "text-black" : "text-[#444]"
+                }`}
+              >
+                {text}
+              </a>
+            ) : (
+              <p
+                key={text}
+                className={`text-base font-medium ${
+                  primary ? "text-black" : "text-[#444]"
+                }`}
+              >
+                {text}
+              </p>
+            )
+          )}
         </div>
       </div>
     </footer>

@@ -8,7 +8,7 @@ interface HeroProps {
 
 export default function Hero({ title, subtitle, blurb }: HeroProps) {
   return (
-    <section className="w-full px-20 pt-12 pb-16">
+    <section className="w-full px-20 pt-12 pb-8">
       <div className="max-w-[844px]">
         <h1 className="text-[64px] font-bold leading-[1.21] tracking-[-0.02em] text-black">
           {title}

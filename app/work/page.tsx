@@ -35,8 +35,8 @@ export default function Work() {
         title="work."
         subtitle="where passion lies at the intersection of tech & creativity."
       />
-      <section className="px-20 py-16">
-        <div className="space-y-0">
+      <section className="px-20 pb-16">
+        <div className="space-y-8">
           {sections.map((s) => (
             <WorkBlock key={s.category} category={s.category} items={s.items} />
           ))}

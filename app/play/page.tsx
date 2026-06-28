@@ -25,8 +25,8 @@ export default function Play() {
         title="play."
         subtitle="some by design, some by necessity, all by passion."
       />
-      <section className="px-20 py-16">
-        <div className="space-y-0">
+      <section className="px-20 pb-16">
+        <div className="space-y-8">
           {sections.map((s) => (
             <WorkBlock key={s.category} category={s.category} items={s.items} />
           ))}
