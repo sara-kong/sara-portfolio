@@ -28,7 +28,7 @@ export default async function WritingPage({
   if (!post) notFound();
 
   return (
-    <article className="px-6 md:px-20 py-16 max-w-2xl">
+    <article className="px-6 md:px-20 py-16">
       <header className="mb-12">
         <h1 className="text-2xl font-medium text-black mb-3">{post.title}</h1>
         {post.date && (
