@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Hero from "@/components/Hero";
 import TypewriterOnce from "@/components/TypewriterOnce";
 import { getWritings } from "@/lib/content";
@@ -30,7 +31,12 @@ export default function Writings() {
                       {w.title}
                     </a>
                   ) : (
-                    <p className="text-base font-normal text-black/80">{w.title}</p>
+                    <Link
+                      href={`/writings/${w.slug}`}
+                      className="text-base font-normal text-black/80 hover:text-black transition-colors"
+                    >
+                      {w.title}
+                    </Link>
                   )}
                   {w.blurb && (
                     <p className="text-sm text-black/45 mt-1 leading-relaxed">{w.blurb}</p>

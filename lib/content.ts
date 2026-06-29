@@ -78,3 +78,26 @@ export function getWritings(): ContentItem[] {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
 }
+
+export interface WritingContent extends ContentItem {
+  rawContent: string;
+}
+
+export function getWritingBySlug(slug: string): WritingContent | null {
+  const filePath = path.join(process.cwd(), "content", "writings", `${slug}.mdx`);
+  if (!fs.existsSync(filePath)) return null;
+  const { data, content } = matter(fs.readFileSync(filePath, "utf8"));
+  if (data.draft === true) return null;
+  return {
+    slug,
+    title: data.title ?? "",
+    blurb: data.blurb ?? "",
+    date: String(data.date ?? ""),
+    tags: data.tags ?? [],
+    link: data.link ?? "",
+    category: data.category ?? "",
+    categoryOrder: data.categoryOrder ?? 0,
+    order: data.order ?? 0,
+    rawContent: content,
+  };
+}
