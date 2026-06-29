@@ -14,9 +14,51 @@ const infoLines: { text: string; primary: boolean; href?: string }[] = [
 
 export default function Footer() {
   return (
-    <footer className="px-20 py-12">
-      <div className="flex justify-between items-start">
-        {/* Left column */}
+    <footer className="px-6 md:px-20 py-12">
+      {/* Mobile: single column */}
+      <div className="flex flex-col md:hidden gap-10">
+        <p className="text-base font-medium text-black">sara kong</p>
+        <div className="flex flex-col gap-5">
+          {socialLinks.map(({ label, href, primary }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`text-base font-medium hover:opacity-60 transition-opacity ${
+                primary ? "text-black" : "text-[#444]"
+              }`}
+            >
+              {label}
+            </a>
+          ))}
+        </div>
+        <div className="flex flex-col gap-5">
+          {infoLines.map(({ text, primary, href }) =>
+            href ? (
+              <a
+                key={text}
+                href={href}
+                className={`text-base font-medium hover:opacity-60 transition-opacity ${
+                  primary ? "text-black" : "text-[#444]"
+                }`}
+              >
+                {text}
+              </a>
+            ) : (
+              <p
+                key={text}
+                className={`text-base font-medium ${primary ? "text-black" : "text-[#444]"}`}
+              >
+                {text}
+              </p>
+            )
+          )}
+        </div>
+      </div>
+
+      {/* Desktop: two columns */}
+      <div className="hidden md:flex justify-between items-start">
         <div>
           <p className="text-base font-medium text-black mb-10">sara kong</p>
           <div className="flex flex-col gap-5">
@@ -35,8 +77,6 @@ export default function Footer() {
             ))}
           </div>
         </div>
-
-        {/* Right column */}
         <div className="flex flex-col gap-5 text-right">
           {infoLines.map(({ text, primary, href }) =>
             href ? (
@@ -52,9 +92,7 @@ export default function Footer() {
             ) : (
               <p
                 key={text}
-                className={`text-base font-medium ${
-                  primary ? "text-black" : "text-[#444]"
-                }`}
+                className={`text-base font-medium ${primary ? "text-black" : "text-[#444]"}`}
               >
                 {text}
               </p>
