@@ -26,11 +26,12 @@ function readItems(folder: string): ContentItem[] {
   return fs
     .readdirSync(dir)
     .filter((f) => f.endsWith(".mdx"))
-    .map((file) => {
+    .flatMap((file) => {
       const { data } = matter(
         fs.readFileSync(path.join(dir, file), "utf8")
       );
-      return {
+      if (data.draft === true) return [];
+      return [{
         slug: file.replace(".mdx", ""),
         title: data.title ?? "",
         blurb: data.blurb ?? "",
@@ -40,7 +41,7 @@ function readItems(folder: string): ContentItem[] {
         category: data.category ?? "",
         categoryOrder: data.categoryOrder ?? 0,
         order: data.order ?? 0,
-      };
+      }];
     });
 }
 
