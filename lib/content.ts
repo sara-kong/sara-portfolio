@@ -83,6 +83,13 @@ export interface WritingContent extends ContentItem {
   rawContent: string;
 }
 
+export function getAboutContent(): string[] {
+  const filePath = path.join(process.cwd(), "content", "about.mdx");
+  if (!fs.existsSync(filePath)) return [];
+  const raw = fs.readFileSync(filePath, "utf8");
+  return raw.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean);
+}
+
 export function getWritingBySlug(slug: string): WritingContent | null {
   const filePath = path.join(process.cwd(), "content", "writings", `${slug}.mdx`);
   if (!fs.existsSync(filePath)) return null;
